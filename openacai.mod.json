@@ -1,0 +1,18 @@
+{
+  "id": "modstoke.virginia",
+  "name": "Modstoke Virginia",
+  "version": "0.1.2",
+  "author": "OpenACAI",
+  "type": "OpenACAIMod",
+  "assembly": "Modstoke.Virginia.dll",
+  "entryType": "Modstoke.Virginia.Plugin",
+  "entryMethod": "Initialize",
+  "lifecycle": [
+    "update",
+    "lateupdate",
+    "shutdown"
+  ],
+  "onUpdate": "Update",
+  "onLateUpdate": "LateUpdate",
+  "onShutdown": "Shutdown"
+}

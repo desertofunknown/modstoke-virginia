@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>Modstoke.Virginia</AssemblyName>
+    <Title>Modstoke Virginia</Title>
+    <Version>0.1.2</Version>
+    <RootNamespace>Modstoke.Virginia</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LoaderAssemblyPath Condition="'$(LoaderAssemblyPath)' == ''">$(MSBuildProjectDirectory)\..\Modstoke.Loader\bin\Release\Modstoke.Loader.dll</LoaderAssemblyPath>
+    <GameRoot Condition="'$(GameRoot)' == ''">$(MSBuildProjectDirectory)\..\..\..\..</GameRoot>
+    <GameInteropRoot Condition="'$(GameInteropRoot)' == ''">$(GameRoot)\BepInEx\interop</GameInteropRoot>
+    <SonsSdkPath Condition="'$(SonsSdkPath)' == ''">$(GameRoot)\BepInEx\plugins\OpenACAILoader\SonsSdk.dll</SonsSdkPath>
+  </PropertyGroup>
+  <Target Name="RequirePinnedSdk" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(LoaderAssemblyPath)')" Text="Set LoaderAssemblyPath to the compatible pinned loader SDK." />
+  </Target>
+  <ItemGroup>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Runtime/ActorAccess.cs" />
+    <Compile Include="Appearance/Appearance.cs" />
+    <Compile Include="Appearance/Appearance.Materials.cs" />
+    <Compile Include="UI/Menu.cs" />
+    <Compile Include="Appearance/ModelAssets.cs" />
+    <Compile Include="UI/Preferences.cs" />
+    <Compile Include="Appearance/PresentationObservation.cs" />
+    <Compile Include="Relationships/Romance.cs" />
+    <Compile Include="Relationships/Romance.Persistence.cs" />
+    <Compile Include="Runtime/Runtime.cs" />
+    <Compile Include="Runtime/Runtime.Network.cs" />
+    <Compile Include="Appearance/SecondaryMotion.cs" />
+    <Compile Include="Appearance/SecondaryMotion.Idle.cs" />
+    <Compile Include="Appearance/Skin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Modstoke.Loader" HintPath="$(LoaderAssemblyPath)" Private="false" />
+    <Reference Include="SonsSdk" HintPath="$(SonsSdkPath)" Private="false" />
+    <Reference Include="Il2CppInterop.Runtime" HintPath="$(GameRoot)\BepInEx\core\Il2CppInterop.Runtime.dll" Private="false" />
+    <Reference Include="Il2Cppmscorlib" HintPath="$(GameInteropRoot)\Il2Cppmscorlib.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameInteropRoot)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.AnimationModule" HintPath="$(GameInteropRoot)\UnityEngine.AnimationModule.dll" Private="false" />
+    <Reference Include="UnityEngine.PhysicsModule" HintPath="$(GameInteropRoot)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="UnityEngine.ImageConversionModule" HintPath="$(GameInteropRoot)\UnityEngine.ImageConversionModule.dll" Private="false" />
+    <Reference Include="DynamicBone" HintPath="$(GameInteropRoot)\DynamicBone.dll" Private="false" />
+    <Reference Include="Sons" HintPath="$(GameInteropRoot)\Sons.dll" Private="false" />
+    <Reference Include="Sons.Ai.Vail" HintPath="$(GameInteropRoot)\Sons.Ai.Vail.dll" Private="false" />
+    <Reference Include="Sons.Save" HintPath="$(GameInteropRoot)\Sons.Save.dll" Private="false" />
+    <Reference Include="Sons.Gameplay.GameSetup" HintPath="$(GameInteropRoot)\Sons.Gameplay.GameSetup.dll" Private="false" />
+    <Reference Include="Endnight" HintPath="$(GameInteropRoot)\Endnight.dll" Private="false" />
+    <Reference Include="bolt" HintPath="$(GameInteropRoot)\bolt.dll" Private="false" />
+    <Reference Include="bolt.user" HintPath="$(GameInteropRoot)\bolt.user.dll" Private="false" />
+    <Reference Include="udpkit" HintPath="$(GameInteropRoot)\udpkit.dll" Private="false" />
+    <Reference Include="udpkit.common" HintPath="$(GameInteropRoot)\udpkit.common.dll" Private="false" />
+    <Reference Include="com.rlabrecque.steamworks.net" HintPath="$(GameInteropRoot)\com.rlabrecque.steamworks.net.dll" Private="false" />
+    <None Update="openacai.mod.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
