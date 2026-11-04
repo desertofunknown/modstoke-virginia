@@ -4,7 +4,7 @@
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <AssemblyName>Modstoke.Virginia</AssemblyName>
     <Title>Modstoke Virginia</Title>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
     <RootNamespace>Modstoke.Virginia</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

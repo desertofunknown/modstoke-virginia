@@ -396,6 +396,9 @@ internal sealed partial class VirginiaAppearance
 
         internal void Create()
         {
+            // Instantiate copies CPU pixels. The game's maps are upload-only, so a copy logs
+            // "No texture data available" and binds an empty texture; keep the original instead.
+            if (!Live(Source) || !Source.isReadable) return;
             try
             {
                 var clone = UnityObject.Instantiate<Texture>(Source);
